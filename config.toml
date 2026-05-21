@@ -1,0 +1,22 @@
+[global]
+state_file = "state.json"
+# webhook_url = "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+
+[[endpoints]]
+name = "httpbin OK"
+url = "https://httpbin.org/status/200"
+interval_secs = 30
+expected_status = 200
+timeout_secs = 10
+
+[[endpoints]]
+name = "httpbin 404"
+url = "https://httpbin.org/status/404"
+interval_secs = 45
+# No expected_status → any 2xx is UP, so this will appear DOWN
+
+[[endpoints]]
+name = "Example.com"
+url = "https://example.com"
+interval_secs = 60
+timeout_secs = 15
