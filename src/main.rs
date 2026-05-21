@@ -11,7 +11,6 @@ use std::path::PathBuf;
 #[derive(Parser, Debug)]
 #[command(name = "tortuga", about = "HTTP endpoint monitor")]
 struct Args {
-    /// Path to the TOML config file
     #[arg(short, long, default_value = "config.toml")]
     config: PathBuf,
 }

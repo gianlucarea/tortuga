@@ -22,12 +22,9 @@ pub struct EndpointConfig {
     pub url: String,
     #[serde(default = "default_interval")]
     pub interval_secs: u64,
-    /// If set, only this exact HTTP status code is considered UP.
-    /// If unset, any 2xx response is UP.
     pub expected_status: Option<u16>,
     #[serde(default = "default_timeout")]
     pub timeout_secs: u64,
-    /// Overrides global webhook_url for this endpoint.
     pub webhook_url: Option<String>,
 }
 
