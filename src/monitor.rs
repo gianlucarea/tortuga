@@ -62,7 +62,6 @@ pub fn apply_check_result(
             code.map_or(String::new(), |c| format!(" (HTTP {})", c)),
         );
         let mut l = log.lock().unwrap();
-        // Ring buffer: keep at most 200 events.
         if l.len() >= 200 {
             l.remove(0);
         }
@@ -133,8 +132,6 @@ mod tests {
         Arc::new(Mutex::new(Vec::new()))
     }
 
-    // --- determine_status ---
-
     #[test]
     fn status_exact_match_up() {
         assert_eq!(determine_status(200, Some(200)), Status::Up);
@@ -147,7 +144,6 @@ mod tests {
 
     #[test]
     fn status_exact_other_2xx_is_down() {
-        // expected=200 but received 201 → Down (strict match)
         assert_eq!(determine_status(201, Some(200)), Status::Down);
     }
 
@@ -165,8 +161,6 @@ mod tests {
         assert_eq!(determine_status(404, None), Status::Down);
         assert_eq!(determine_status(500, None), Status::Down);
     }
-
-    // --- apply_check_result ---
 
     #[test]
     fn first_check_unknown_to_up_signals_change() {
@@ -199,7 +193,6 @@ mod tests {
     fn status_change_pushes_log_entry() {
         let state = make_state();
         let log = make_log();
-        // Unknown→Up (change), then Up→Down (change) = 2 log entries
         apply_check_result("svc", Status::Up, Some(200), 10, &state, &log);
         apply_check_result("svc", Status::Down, None, 5000, &state, &log);
         let l = log.lock().unwrap();
@@ -211,7 +204,6 @@ mod tests {
     fn no_change_does_not_push_log_entry() {
         let state = make_state();
         let log = make_log();
-        // Unknown→Up (change = 1 entry), then Up→Up (no change = still 1 entry)
         apply_check_result("svc", Status::Up, Some(200), 10, &state, &log);
         apply_check_result("svc", Status::Up, Some(200), 12, &state, &log);
         let l = log.lock().unwrap();
@@ -222,7 +214,6 @@ mod tests {
     fn ring_buffer_caps_at_200() {
         let state = make_state();
         let log = make_log();
-        // Alternate Up/Down 201 times; every call changes status → 201 changes.
         for i in 0u64..=200 {
             let status = if i % 2 == 0 { Status::Up } else { Status::Down };
             apply_check_result("svc", status, Some(200), 10, &state, &log);

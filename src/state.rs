@@ -111,7 +111,6 @@ mod tests {
         map
     }
 
-    // uptime_pct returns None before any checks, correct % after
     #[test]
     fn uptime_pct_no_checks() {
         assert_eq!(EndpointState::new().uptime_pct(), None);
@@ -129,7 +128,6 @@ mod tests {
         assert!((s.uptime_pct().unwrap() - 100.0).abs() < f64::EPSILON);
     }
 
-    // save_state / load_state round-trip preserves all fields
     #[test]
     fn state_round_trip() {
         let dir = tempfile::tempdir().unwrap();
@@ -156,7 +154,6 @@ mod tests {
         assert_eq!(broken.up_checks, 0);
     }
 
-    // load_state on a missing file returns an empty map, not an error
     #[test]
     fn load_missing_file_returns_empty() {
         let dir = tempfile::tempdir().unwrap();
@@ -165,7 +162,6 @@ mod tests {
         assert!(result.is_empty());
     }
 
-    // load_state on corrupt JSON returns an error
     #[test]
     fn load_corrupt_json_errors() {
         let dir = tempfile::tempdir().unwrap();
@@ -174,7 +170,6 @@ mod tests {
         assert!(load_state(&path).is_err());
     }
 
-    // Status::label returns the right string for each variant
     #[test]
     fn status_labels() {
         assert_eq!(Status::Up.label(), "UP");

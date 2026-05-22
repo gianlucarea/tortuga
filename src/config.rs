@@ -14,6 +14,8 @@ pub struct GlobalConfig {
     #[serde(default = "default_state_file")]
     pub state_file: String,
     pub webhook_url: Option<String>,
+    pub telegram_bot_token: Option<String>,
+    pub telegram_chat_id: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Clone)]
@@ -26,6 +28,7 @@ pub struct EndpointConfig {
     #[serde(default = "default_timeout")]
     pub timeout_secs: u64,
     pub webhook_url: Option<String>,
+    pub telegram_chat_id: Option<String>,
 }
 
 fn default_state_file() -> String {

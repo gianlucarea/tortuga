@@ -26,7 +26,6 @@ fn main() -> Result<()> {
             ep.interval_secs, ep.name, ep.url
         );
     }
-    println!("\n(Full runtime not yet implemented — phases 2-6 pending)");
     Ok(())
 }
 
