@@ -1,0 +1,26 @@
+{
+  "Example.com": {
+    "status": "Up",
+    "last_code": 200,
+    "last_checked": "2026-05-22T14:58:24.671431Z",
+    "response_ms": 135,
+    "total_checks": 25,
+    "up_checks": 25
+  },
+  "httpbin OK": {
+    "status": "Up",
+    "last_code": 200,
+    "last_checked": "2026-05-22T14:58:35.252256Z",
+    "response_ms": 1628,
+    "total_checks": 48,
+    "up_checks": 47
+  },
+  "httpbin 404": {
+    "status": "Down",
+    "last_code": 404,
+    "last_checked": "2026-05-22T14:58:13.130864Z",
+    "response_ms": 779,
+    "total_checks": 32,
+    "up_checks": 0
+  }
+}

@@ -112,8 +112,8 @@ pub fn spawn_monitor(
 ) -> tokio::task::JoinHandle<()> {
     tokio::spawn(async move {
         loop {
-            sleep(Duration::from_secs(ep.interval_secs)).await;
             poll_once(&ep, &global, &state, &log, &client).await;
+            sleep(Duration::from_secs(ep.interval_secs)).await;
         }
     })
 }
