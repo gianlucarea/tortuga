@@ -1,5 +1,3 @@
-<div align="center">
-
 # Tortuga 🏴‍☠️
 
 > *"Make way! Make way for Tortuga!"*
@@ -50,7 +48,6 @@ Alerts are pushed to a Telegram channel or chat the moment an endpoint changes s
    - For a **private channel / group**: add the bot as an admin, then call `https://api.telegram.org/bot<token>/getUpdates` — the `"chat"."id"` field in the response is your chat ID (negative number for channels, e.g. `-1001234567890`).
 3. Add the values to `config.toml` (see configuration below).
 
----
 
 ## Installation
 
@@ -63,7 +60,6 @@ cargo build --release
 # Binary is at target/release/tortuga
 ```
 
----
 
 ## Configuration
 
@@ -112,7 +108,6 @@ timeout_secs  = 15
 | `expected_status` | endpoint | Exact HTTP status for UP; omit for any 2xx |
 | `timeout_secs` | endpoint | Request timeout in seconds (default: 10) |
 
----
 
 ## Usage
 
@@ -126,7 +121,6 @@ timeout_secs  = 15
 
 Press **`q`** or **`Ctrl-C`** to exit. The current state is saved to `state.json` on quit and reloaded on the next startup, preserving uptime percentages.
 
----
 
 ## Project structure
 
@@ -140,7 +134,6 @@ src/
   ui.rs        — ratatui TUI render loop
 ```
 
----
 
 ## License
 
