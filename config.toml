@@ -1,6 +1,8 @@
 [global]
 state_file = "state.json"
 # webhook_url = "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+telegram_bot_token = "8297937720:AAEJfXtdE9aeOQU5HC0uDlRdAk7Sa7LHeDo"   # e.g. 123456:ABC-DEF... (get from @BotFather)
+telegram_chat_id = "@tortugaRust"      # public: "@mychannel" / private: "-1001234567890"
 
 [[endpoints]]
 name = "httpbin OK"
