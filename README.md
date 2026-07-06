@@ -3,6 +3,8 @@
 > *"Make way for Tortuga!"*
 > — Captain Barbossa
 
+🛠️ **Project Origin**: This project originally began as a highly successful AI-assisted engineering experiment designed to build a lightweight, specialized tool for personal development workflows.
+
 **A blazingly fast, terminal-based HTTP endpoint monitor** that watches your services in real-time, fires instant alerts the moment anything goes down, and never loses state.
 
 Tortuga renders a **live TUI dashboard** refreshed every second, sends push notifications via **Telegram** and Slack/Discord webhooks, and persists uptime metrics across restarts—all from a single binary.
